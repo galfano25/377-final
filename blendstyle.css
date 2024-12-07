@@ -1,0 +1,65 @@
+/*
+light blue: a8c0e4;
+darker blue: 4d71a7;
+light pink: ec97bb;
+darker pink: b2557d;
+light green: b8cd94;
+*/
+
+/*shared css*/
+body {
+    color: white;
+    margin: 40px;
+    background-color: black;
+    font-family: Palatino, serif; /*need something cuter*/}
+#NavBar {
+    overflow: hidden;
+    background-color: black;}
+#NavBar a {
+    color: white;
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+    font-size: 25px;}
+#NavBar a.active {
+    color: #a8c0e4;}
+#NavBarPosition {
+    float:right;}
+#ParentBody {
+    border: 1px solid purple;
+    margin-top: 30px;}
+#BodyLeft {
+    display: inline-block;
+    border: 1px solid red;
+    width: 45%;}
+#BodyRight {
+    border: 1px solid green;
+    float: right;
+    width: 45%;
+    text-align: center;
+    margin-right: 5%;}
+h1 {
+    color: #a8c0e4;
+    font-size: 70px;
+    text-align: center;}
+h2 {
+    color: #4d71a7;
+    font-size: 50px;}
+p {text-align: center; font-size: 20px;}
+
+/*css specfiic to the home page*/
+#Blendify, #TopArtistsChart {
+    text-align: center;}
+
+/*css specfiic to the about page*/
+#AuthorsDiv, #BTSDiv {
+    text-align: center;}
+.circle {
+width: 50px;
+height: 50px;
+border-radius: 50%;
+}
+
+/*css specfiic to the help page*/
+#ContactForm {
+    text-align: center;}
