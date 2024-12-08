@@ -80,6 +80,7 @@ border-radius: 50%;
 #BTSSlider img {
     width: 70%;
     height: auto;
+    margin-left: 15%;
 }
 
 /*css specfiic to the help page*/
