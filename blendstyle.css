@@ -25,7 +25,7 @@ body {
     color: #a8c0e4;}
 #NavBarPosition {
     float:right;}
-#ParentBody {
+#ParentBody { /*does container size dynamically to child containers? see "why blendify"*/
     border: 1px solid purple;
     margin-top: 30px;}
 #BodyLeft {
@@ -52,12 +52,28 @@ p {text-align: center; font-size: 20px;}
     text-align: center;}
 
 /*css specfiic to the about page*/
-#AuthorsDiv, #BTSDiv {
+#AuthorsDiv {
+    text-align: center;}
+#BTSDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    overflow: auto;
     text-align: center;}
 .circle {
 width: 50px;
 height: 50px;
 border-radius: 50%;
+}
+#BTSSlider { 
+    position: inherit;
+    flex: 1;
+    height: 100%;
+}
+#BTSSlider img {
+    width: 70%;
+    height: auto;
 }
 
 /*css specfiic to the help page*/
