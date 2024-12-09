@@ -2,6 +2,7 @@
     <head>
         <title>blendify - home</title>
         <link rel="stylesheet" href="blendstyle.css">
+        <script src="blendjava.js" defer></script>
         <!--files that exist so far
             blendhome.html
             blendabout.html
@@ -23,18 +24,19 @@
             <div id="BodyLeft">
                 <h1>blendify</h1>
                 <p>Connect you and your friends' Spotify accounts to get a blended playlist of everyone's favorite genre!</p>
+                <br>
                 <div class="PickGenre">
-                    <button class="genreButton"> Pick a Genre </button>
+                    <button id="genreButton" class="genreButton"> Pick a Genre </button>
                     <div class="genres">
-                        <a href="#pop"> Pop </a>
-                        <a href="#rock"> Rock </a>
-                        <a href="#rap"> Rap </a>
-                        <a href="#rnb"> R&B </a>
-                        <a href="#edm"> EDM </a>
-                        <a href="#country"> Country </a>
-                        <a href="#jazz"> Jazz </a>
-                        <a href="#classical"> Classical </a>
-                        <a href="#indie"> Indie </a>
+                        <a href="#" onclick="selectGenre('Pop')"> Pop </a>
+                        <a href="#" onclick="selectGenre('Rock')"> Rock </a>
+                        <a href="#" onclick="selectGenre('Rap')"> Rap </a>
+                        <a href="#" onclick="selectGenre('R&B')"> R&B </a>
+                        <a href="#" onclick="selectGenre('EDM')"> EDM </a>
+                        <a href="#" onclick="selectGenre('Country')"> Country </a>
+                        <a href="#" onclick="selectGenre('Jazz')"> Jazz </a>
+                        <a href="#" onclick="selectGenre('Classical')"> Classical </a>
+                        <a href="#" onclick="selectGenre('Indie')"> Indie </a>
                     </div>
                 </div>
                 <br><br>

@@ -47,7 +47,10 @@ h1 {
     font-size: 100px;
     text-align: center;
     font-family: 'Fredoka One', sans-serif;
-    -webkit-text-stroke: 0.1px white;}
+    -webkit-text-stroke: 0.1px white;
+    margin-bottom: 10px;
+    margin-top: 50px;
+}
 h2 {
     color: #4d71a7;
     font-size: 50px;}
