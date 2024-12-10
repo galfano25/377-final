@@ -43,7 +43,15 @@
                 <button class="generateButton"> Generate Playlist </button>
             </div>
             <div id="BodyRight">
-                <p>**link accounts here**</p>
+                <p>Link your Spotify accounts here!</p>
+                <!--testing API-->
+                <form id="UserAccounts" onsubmit="getUserID(); return false">
+                    <label for="User1">userID: </label>
+                    <input type="text" id="User1" name="User1" placeholder="smedjan" required>
+
+                    <!--submit for testing purposes-->
+                    <input type="submit">
+                </form>
             </div>
             <div id="Blendify">
                 <p>the results of the 'blend' will go here</p>
