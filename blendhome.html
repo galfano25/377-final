@@ -3,6 +3,7 @@
         <title>blendify - home</title>
         <link rel="stylesheet" href="blendstyle.css">
         <script src="blendjava.js" defer></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <!--files that exist so far
             blendhome.html
             blendabout.html
@@ -45,13 +46,19 @@
             <div id="BodyRight">
                 <p>Link your Spotify accounts here!</p>
                 <!--testing API-->
-                <form id="UserAccounts" onsubmit="getUserID(); return false">
-                    <label for="User1">userID: </label>
-                    <input type="text" id="User1" name="User1" placeholder="smedjan" required>
+                <div class="login">
+                    <form id="UserAccounts" onsubmit="getUserID(); return false">
+                        <label for="User1"> Enter your User ID </label>
+                        <br>
+                        <div class="input-container">
+                            <i class="fa fa-user icon"></i>
+                            <input type="text" id="User1" name="User1" placeholder="User ID" required>
+                        </div>
 
-                    <!--submit for testing purposes-->
-                    <input type="submit">
-                </form>
+                        <!--submit for testing purposes-->
+                        <input type="submit">
+                    </form>
+                </div>
             </div>
             <div id="Blendify">
                 <p>the results of the 'blend' will go here</p>
