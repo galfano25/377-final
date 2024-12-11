@@ -14,7 +14,6 @@ body {
     color: white;
     margin: 40px;
     background: linear-gradient(to bottom, #6280ad, #fafdff);
-    height: 100vh;
     font-family: Verdana, Geneva, Tahoma, sans-serif; /*need something cuter*/}
 #NavBar {
     overflow: hidden;}
@@ -29,8 +28,10 @@ body {
 #NavBarPosition {
     float:right;}
 #ParentBody { /*does container size dynamically to child containers? see "why blendify"*/
+    text-align: center;
     border: 1px solid purple;
-    margin-top: 30px;}
+    margin-top: 30px;
+    display: block;}
 #BodyLeft {
     display: inline-block;
     border: 1px solid #ff0000;
@@ -50,10 +51,23 @@ h1 {
     -webkit-text-stroke: 0.1px white;
     margin-bottom: 10px;
     margin-top: 50px;
+    text-shadow: 0 0 .25rem rgba(255, 255, 255, 0.5), 0 0 .25rem #4d71a7, 0 0 .25rem #4d71a7;
 }
 h2 {
-    color: #4d71a7;
-    font-size: 50px;}
+    color: white;
+    font-size: 50px;
+    font-family: 'Fredoka One', sans-serif;
+    -webkit-text-stroke: 0.3px #a8c0e4;
+    text-shadow: 0 0 .25rem rgba(255, 255, 255, 0.5), 0 0 .25rem #4d71a7, 0 0 .25rem #4d71a7;
+}
+.gradient-text {
+    font-size: 25px;
+    background-image: linear-gradient(to bottom right, #ffffff, #dbf0ff,  #74a3e9);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 0.8px white;
+}
 p {text-align: center; font-size: 20px;}
 
 /*css specfiic to the home page*/
@@ -70,11 +84,6 @@ p {text-align: center; font-size: 20px;}
     height: 100vh;
     overflow: auto;
     text-align: center;}
-.circle {
-width: 50px;
-height: 50px;
-border-radius: 50%;
-}
 #BTSSlider { 
     position: inherit;
     flex: 1;
@@ -84,6 +93,24 @@ border-radius: 50%;
     width: 70%;
     height: auto;
     margin-left: 15%;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+td {
+    vertical-align: middle;
+    padding: 10px;
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 auto;
 }
 
 /*css specfiic to the help page*/
