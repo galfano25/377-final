@@ -29,6 +29,7 @@ function selectGenre(chosenGenre) {
   };
 
   button.style.backgroundColor = genreColors[chosenGenre] || "#898989";
+  button.style.color = "white";
 }
 
 //authorization
