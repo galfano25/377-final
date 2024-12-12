@@ -3,7 +3,8 @@ const supabaseClient = require("@supabase/supabase-js");
 const bodyParser = require("body-parser");
 
 const app = express();
-const port = 3000;
+const port = 8888;
+
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 
@@ -11,6 +12,16 @@ const supabaseURL = "https://bxpqeyuxtzcczjktprwe.supabase.co";
 const supabaseKey =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4cHFleXV4dHpjY3pqa3RwcndlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzM4NTQ5MjAsImV4cCI6MjA0OTQzMDkyMH0.t1c8Lyhv3lJgTcrc5rPeLZymPjZ8kG-VrHBVMd9ssM8";
 const supabase = supabaseClient.createClient(supabaseURL, supabaseKey);
+
+//loads homepage
+app.get("", (req, res) => {
+  res.sendFile(__dirname + "/public/login.html");
+});
+
+//callback
+app.get("/blendhome.html", (req, res) => {
+  res.sendFile(__dirname + "/blendhome.html");
+});
 
 app.get("/TESTs", async (req, res) => {
   console.log("test attempt");
@@ -45,6 +56,5 @@ app.post("/TEST", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log("App is here");
-});
+console.log("Listening on ", port);
+app.listen(port);

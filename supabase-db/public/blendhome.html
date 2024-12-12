@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>blendify - home</title>
+        <link rel="stylesheet" href="blendstyle.css">
+        <script src="supabase-db/index.js" defer></script>
+        <script src="blendjava.js" defer></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <!--files that exist so far
+            blendhome.html
+            blendabout.html
+            blendhelp.html
+            blendstyle.css
+            blendjava.js
+        -->
+    </head>
+    <body>
+        <div id="NavBar">
+        <span id="NavBarPosition">
+            <a class="active" href="blendhome.html">home</a>
+            <a href="blendabout.html">about</a>
+            <a href="blendhelp.html">help</a>
+        </span>
+        </div>
+
+        <div id="ParentBody">
+            <div id="BodyLeft">
+                <h1>blendify</h1>
+                <p>Connect you and your friends' Spotify accounts to get a blended playlist of everyone's favorite genre!</p>
+                <br>
+                <div class="PickGenre">
+                    <button id="genreButton" class="genreButton"> Pick a Genre </button>
+                    <div class="genres">
+                        <a href="#" onclick="selectGenre('Pop')"> Pop </a>
+                        <a href="#" onclick="selectGenre('Rock')"> Rock </a>
+                        <a href="#" onclick="selectGenre('Rap')"> Rap </a>
+                        <a href="#" onclick="selectGenre('R&B')"> R&B </a>
+                        <a href="#" onclick="selectGenre('EDM')"> EDM </a>
+                        <a href="#" onclick="selectGenre('Country')"> Country </a>
+                        <a href="#" onclick="selectGenre('Jazz')"> Jazz </a>
+                        <a href="#" onclick="selectGenre('Classical')"> Classical </a>
+                        <a href="#" onclick="selectGenre('Indie')"> Indie </a>
+                        <a href="#" onclick="selectGenre('Metal')"> Metal </a>
+                    </div>
+                </div>
+                <br><br>
+                <button class="generateButton"> Generate Playlist </button>
+            </div>
+            <div id="BodyRight">
+                <p>Link your Spotify accounts here!</p>
+                <!--testing API-->
+                <div class="login">
+                    <form id="UserAccounts" onsubmit="getUserID(); return false">
+                        <label for="User1"> Enter your User ID </label>
+                        <br>
+                        <div class="input-container">
+                            <i class="fa fa-user icon"></i>
+                            <input type="text" id="User1" name="User1" placeholder="User ID" required>
+                        </div>
+
+                        <!--submit for testing purposes-->
+                        <input type="submit">
+                    </form>
+                </div>
+            </div>
+            <div id="Blendify">
+                <p>the results of the 'blend' will go here</p>
+            </div>
+            <div id="TopArtistsChart">
+                <p>**chart (using javascript charting library) that shows the users top artists **</p>
+            </div>
+        </div>
+    </body>
+</html>
