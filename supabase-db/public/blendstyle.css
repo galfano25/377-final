@@ -115,7 +115,56 @@ td {
 
 /*css specfiic to the help page*/
 #ContactForm {
-    text-align: center;}
+    text-align: center;
+}
+
+.ContactUs {
+    width:fit-content;
+    padding: 20px;
+    margin: 20px auto;
+    background: linear-gradient(to bottom right, #ffffffff, #9eb5db);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.ContactUs input[type=text], textarea ,input[type=email] {
+    width: 100%;
+    padding: 12px;
+    background: #fff;
+	justify-content: center;
+	display: flex;
+	border: none;
+	outline: none;
+	border-radius: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.ContactUs form input[type=submit] {
+    color: #ffffff;
+    padding: 15px 25px;
+    border-radius: 100px;
+    background-color: #839fc8;
+    background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 87% at 26% 20%, rgba(255, 255, 255, 0.41) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+    font-weight: bold;
+    font-size: 16px;
+  
+    border: 0;
+  
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease;
+}
+
+.ContactUs form input[type="submit"]:not([disabled]):focus {
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(172, 216, 255, 0.5), .125rem .125rem 1rem rgba(255, 255, 255, 0.5);
+}
+  
+.ContactUs form input[type="submit"]:not([disabled]):hover {
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(124, 194, 255, 0.5), .125rem .125rem 1rem rgba(255, 255, 255, 0.5);
+}
 
 /* pick a genre dropdown menu */
 .PickGenre {
@@ -156,9 +205,9 @@ td {
     color: #7590b9;
     padding: 15px 25px;
     border-radius: 100px;
-    background-color: #fff;
+    background-color: #ffffffe2;
     background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 87% at 26% 20%, rgba(255, 255, 255, 0.41) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
-    box-shadow: 2px 19px 31px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     font-weight: bold;
     font-size: 16px;
   
@@ -173,7 +222,7 @@ td {
 }
 
 .PickGenre:hover .genreButton {
-    background-color: #cecece;
+    background-color: #ffffff;
     transform: scale(1.2);
 }
 
@@ -181,9 +230,9 @@ td {
     color: #fff;
     padding: 15px 25px;
     border-radius: 100px;
-    background-color: #4d71a7;
+    background-color: #839fc8;
     background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 87% at 26% 20%, rgba(255, 255, 255, 0.41) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
-    box-shadow: 2px 19px 31px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     font-weight: bold;
     font-size: 16px;
   

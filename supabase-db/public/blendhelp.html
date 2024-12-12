@@ -2,6 +2,7 @@
     <head>
         <title>blendify - help</title>
         <link rel="stylesheet" href="blendstyle.css">
+        <script src="blendjava.js" defer></script>
     </head>
     <body>
         <div id="NavBar">
@@ -15,21 +16,36 @@
         <div id="ParentBody">
             <div id="BodyLeft">
                 <h1>how to blend</h1>
-                <ol>
-                    <li>first</li>
-                    <li>second</li>
-                    <li>etc</li>
+                <ol style="text-align: left; font-size: 20px;">
+                    <li> Log in using your User ID. </li>
+                    <li> Have your friends log in with their User IDs. </li>
+                    <li> Click pick a genre and select your preferred genre from the list. </li>
+                    <li> Click the "Generate" button and watch as blendify created your playlist. </li>
+                    <li> Enjoy and share the playlist! </li>
                 </ol>
             </div>
             <div id="BodyRight">
                 <h2>f.a.q.</h2>            
-                <p><b>question:</b> answer</p>
-                <p><b>question:</b> answer</p>
-                <p>etc</p>
+                <p style="text-align: left;"><b>Q: Can I use blendify without a Spotify account?</b> <br>
+                    <span style="font-size: 18px;">Unfortunately, you need a Spotify account to use Blendify as it pulls data from Spotify to create playlists based on your preferences.</span></p>
+                <p style="text-align: left;"><b>Q: How does Blendify select the songs for my playlist?</b> <br>
+                    <span style="font-size: 18px;">blendify uses your chosen genre and the music preferences of you and your friends to select songs. It looks at your Spotify listening history, favorite artists, and top tracks to create the playlist.</span></p>
+                <p style="text-align: left;"><b>Q: Is blendify free to use?</b> <br>
+                    <span style="font-size: 18px;">Yes, blendify is completely free to use.</span></p>
+                <p style="text-align: left;"><b>Q: Can I change the genre of my blended playlist after it’s created?</b> <br>
+                    <span style="font-size: 18px;">Yes, you can always reload the page and update your genre preferences. Afterward, blendify will regenerate the playlist with your new genre selection.</span></p>
             </div>
             <div id="ContactForm">
-                <h2>contact us</h2>
-                <p>form that takes name, email, and a message</p>
+                <h2 style="margin-top: 100px;"> contact us </h2>
+                <div class="ContactUs">
+                    <form id="contactForm">
+                        <input type="text" id="contactName" name="contactName" placeholder="Name" required><br>
+                        <input type="email" id="contactEmail" name="contactEmail" placeholder="Email" required><br>
+                        <input type="text" id="contactSubject" name="contactSubject" placeholder="Subject" required><br>
+                        <textarea id="contactText" name="contactText" rows="4" cols="50" placeholder="Message" required></textarea><br><br>
+                        <input type="submit" value="Send Us A Message">
+                    </form>
+                </div>
             </div>
         </div>
     </body>
