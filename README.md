@@ -9,6 +9,7 @@
 <br>artist data should show in console
 <br>username of current user should show in console
 <br>URL should read as localhost:8888/public/blendhome.html
+<br>upon page load, <b><em>your data will upload to supabase</em></b>, so make sure to check that to ensure your data loaded correctly
 
 <b>errors</b>
 <br>
