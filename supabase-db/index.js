@@ -34,10 +34,20 @@ app.get("/public/blendhelp.html", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "blendhelp.html"));
 });
 
-app.get("/TESTs", async (req, res) => {
-  console.log("test attempt");
+//add user top artists to supabase, link to user id
+app.post("/usertopartists", async (req, res) => {
+  console.log("request ", req.body);
+  const userID = req.body.user_id;
+  const artistName = req.body.artist_name;
+  const artistID = req.body.artist_id;
+  const genreNames = req.body.genre_name;
 
-  const { data, error } = await supabase.from("TEST").select();
+  const { data, error } = await supabase.from("top_artists").insert({
+    user_id: userID,
+    artist_name: artistName,
+    artist_id: artistID,
+    genre_name: genreNames,
+  });
 
   if (error) {
     console.log("Error: ", error);
@@ -48,16 +58,12 @@ app.get("/TESTs", async (req, res) => {
   }
 });
 
-app.post("/TEST", async (req, res) => {
-  console.log("add username");
+//template to get data
+app.get("/TESTs", async (req, res) => {
+  console.log("test attempt");
 
-  console.log("request", req.body);
+  const { data, error } = await supabase.from("TEST").select();
 
-  const username = req.body.username;
-  const { data, error } = await supabase
-    .from("TEST")
-    .insert({ username: username })
-    .select();
   if (error) {
     console.log("Error: ", error);
     res.send(error);

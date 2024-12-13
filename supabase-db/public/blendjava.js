@@ -55,6 +55,27 @@ function onPageLoad() {
   }
 }
 
+function topArtists() {
+  if (artistData && artistData.length > 0) {
+    artistData.forEach((artist) => {
+      fetch("http://localhost:8888/usertopartists", {
+        method: "POST",
+        body: JSON.stringify({
+          user_id: username,
+          artist_name: artist.name,
+          artist_id: artist.id,
+          genre_name: artist.genres,
+        }),
+        headers: {
+          "Content-Type": "application/json; charset=UTF-8",
+        },
+      });
+    });
+  } else {
+    console.error("Data is unavailable");
+  }
+}
+
 function redirectUser() {
   let code = getCode();
   if (code) {
@@ -142,9 +163,6 @@ function getUserData() {
 
   //get username
   callApi("GET", userID, null, handleUserIDResponse);
-
-  //something here to post
-  //make endpoint in index.js
 }
 
 function handleArtistResponse() {
@@ -153,6 +171,7 @@ function handleArtistResponse() {
     var data = JSON.parse(this.responseText);
     artistData = data.items;
     console.log(artistData);
+    topArtists();
   } else if (this.status == 401) {
     refreshAccessToken();
   } else {
