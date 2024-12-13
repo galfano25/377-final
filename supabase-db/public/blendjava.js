@@ -1,3 +1,4 @@
+//OAuth stuff
 var client_id = "4a99b5944530470daf7c9659a88fc2f0";
 var client_secret = "a3a8ddad071242128d8d0c39c332fe88";
 var redirect_uri = "http://localhost:8888/public/blendhome.html";
@@ -5,6 +6,9 @@ var redirect_uri = "http://localhost:8888/public/blendhome.html";
 const authorize = "https://accounts.spotify.com/authorize";
 
 const token = "https://accounts.spotify.com/api/token";
+const userID = "https://api.spotify.com/v1/me";
+let username = null;
+let artistData = null;
 const artists = "https://api.spotify.com/v1/me/top/artists";
 
 //initialize slider
@@ -39,7 +43,7 @@ function spotifyAuth() {
   url += "&response_type=code";
   url += "&redirect_uri=" + encodeURI(redirect_uri);
   url += "&show_dialog=true";
-  url += "&scope=user-top-read";
+  url += "&scope=user-top-read user-read-private user-read-email";
   window.location.href = url;
 }
 
@@ -47,7 +51,7 @@ function onPageLoad() {
   if (window.location.search.length > 0) {
     redirectUser();
   } else {
-    getArtists();
+    getUserData();
   }
 }
 
@@ -56,7 +60,7 @@ function redirectUser() {
   if (code) {
     fetchAccessToken(code);
     window.history.pushState("", "", redirect_uri);
-    getArtists();
+    getUserData();
   } else {
     console.error("Authorization code not found");
   }
@@ -104,6 +108,7 @@ function refreshAccessToken() {
 function handleAuthResponse() {
   if (this.status == 200) {
     var data = JSON.parse(this.responseText);
+    //getUserID();
     if (data.access_token != undefined) {
       access_token = data.access_token;
       localStorage.setItem("access_token", access_token);
@@ -130,14 +135,37 @@ function callApi(method, url, body, callback) {
   xhr.onload = callback;
 }
 
-function getArtists() {
+//grabs top artists and username upon load
+function getUserData() {
+  //get artists
   callApi("GET", artists, null, handleArtistResponse);
+
+  //get username
+  callApi("GET", userID, null, handleUserIDResponse);
+
+  //something here to post
+  //make endpoint in index.js
 }
 
 function handleArtistResponse() {
   if (this.status == 200) {
+    //top artist data is here
     var data = JSON.parse(this.responseText);
-    console.log(data);
+    artistData = data.items;
+    console.log(artistData);
+  } else if (this.status == 401) {
+    refreshAccessToken();
+  } else {
+    console.log(this.responseText);
+    alert(this.responseText);
+  }
+}
+
+function handleUserIDResponse() {
+  if (this.status == 200) {
+    var data = JSON.parse(this.responseText);
+    username = data.id;
+    console.log(username);
   } else if (this.status == 401) {
     refreshAccessToken();
   } else {
