@@ -11,10 +11,12 @@
 <br>URL should read as localhost:8888/public/blendhome.html
 
 <b>errors</b>
+<br>
 <em>nothing showing on console:</em>
 <br>go to network tab and filter for "Fetch/XHR"
 <br>check if "token," "artists," and/or "me" went through
 <br>token expired, try logging in again (although should handle token refresh)
 <br>your ad blocker is enabled - disable for spotify API
+<br>
 <em>url includes anything other than /public/blendhome.html:</em>
 <br>make sure your ad blocker is disabled for the spotifyapi and in the spotify auth page
