@@ -1,11 +1,12 @@
 const express = require("express");
 const supabaseClient = require("@supabase/supabase-js");
 const bodyParser = require("body-parser");
+const path = require("path");
 
 const app = express();
 const port = 8888;
 
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(path.join(__dirname + "/public")));
 app.use(bodyParser.json());
 
 const supabaseURL = "https://bxpqeyuxtzcczjktprwe.supabase.co";
@@ -14,13 +15,23 @@ const supabaseKey =
 const supabase = supabaseClient.createClient(supabaseURL, supabaseKey);
 
 //loads homepage
-app.get("", (req, res) => {
-  res.sendFile(__dirname + "/public/login.html");
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "login.html"));
 });
 
 //callback
-app.get("/blendhome.html", (req, res) => {
-  res.sendFile(__dirname + "/blendhome.html");
+app.get("/public/blendhome.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "blendhome.html"));
+});
+
+//load about page
+app.get("/public/blendabout.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "blendabout.html"));
+});
+
+//load help page
+app.get("/public/blendhelp.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "blendhelp.html"));
 });
 
 app.get("/TESTs", async (req, res) => {
