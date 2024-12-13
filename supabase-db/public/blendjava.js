@@ -9,6 +9,7 @@ const token = "https://accounts.spotify.com/api/token";
 const userID = "https://api.spotify.com/v1/me";
 let username = null;
 let artistData = null;
+//may want to edit endpoint to be only 5 artists
 const artists = "https://api.spotify.com/v1/me/top/artists";
 
 //initialize slider
