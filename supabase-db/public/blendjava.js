@@ -5,7 +5,7 @@ var redirect_uri = "http://localhost:8888/public/blendhome.html";
 const authorize = "https://accounts.spotify.com/authorize";
 
 const token = "https://accounts.spotify.com/api/token";
-const currentUser = "https://api.spotify.com/v1/me";
+const artists = "https://api.spotify.com/v1/me/top/artists";
 
 //initialize slider
 simpleslider.getSlider({
@@ -39,23 +39,27 @@ function spotifyAuth() {
   url += "&response_type=code";
   url += "&redirect_uri=" + encodeURI(redirect_uri);
   url += "&show_dialog=true";
-  //url += "&scope="
+  url += "&scope=user-top-read";
   window.location.href = url;
 }
 
 function onPageLoad() {
-  //if its users first time on page
   if (window.location.search.length > 0) {
     redirectUser();
   } else {
-    getUser();
+    getArtists();
   }
 }
 
 function redirectUser() {
   let code = getCode();
-  fetchAccessToken(code);
-  window.history.pushState("", "", redirect);
+  if (code) {
+    fetchAccessToken(code);
+    window.history.pushState("", "", redirect_uri);
+    getArtists();
+  } else {
+    console.error("Authorization code not found");
+  }
 }
 
 function getCode() {
@@ -83,8 +87,7 @@ function callAuthApi(body) {
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.setRequestHeader(
     "Authorization",
-    "Basic " +
-      new Buffer.from(client_id + ":" + client_secret).toString("base64")
+    "Basic " + btoa(client_id + ":" + client_secret)
   );
   xhr.send(body);
   xhr.onload = handleAuthResponse;
@@ -107,7 +110,7 @@ function handleAuthResponse() {
     }
     if (data.refresh_token != undefined) {
       refresh_token = data.refresh_token;
-      localStorage.setitem("refresh_token", refresh_token);
+      localStorage.setItem("refresh_token", refresh_token);
     }
   } else {
     console.log(this.responseText);
@@ -127,32 +130,18 @@ function callApi(method, url, body, callback) {
   xhr.onload = callback;
 }
 
-async function getUser() {
-  const user = await fetch(currentUser);
-  if (!user) {
-    console.log("error");
+function getArtists() {
+  callApi("GET", artists, null, handleArtistResponse);
+}
+
+function handleArtistResponse() {
+  if (this.status == 200) {
+    var data = JSON.parse(this.responseText);
+    console.log(data);
+  } else if (this.status == 401) {
+    refreshAccessToken();
   } else {
-    console.log("success");
+    console.log(this.responseText);
+    alert(this.responseText);
   }
 }
-// async function getUserID() {
-//   //test with only one user ID, need to scale
-//   const userID = document.getElementById("User1");
-
-//   //eval userID with regex, ensure correct format & give user the incorrect userID
-//   try {
-//     const response = await fetch(`https://api.spotify.com/v1/users/${userID}`, {
-//       headers: {
-//         Authorization: `Bearer ${accessToken}`,
-//         "Content-Type": "application/json",
-//       },
-//     });
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! Status: ${response.status}`);
-//     }
-//     const validID = await response.json();
-//     console.log(validID);
-//   } catch (error) {
-//     console.error("Error fetching user profile: ", error);
-//   }
-// }

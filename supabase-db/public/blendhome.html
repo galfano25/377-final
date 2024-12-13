@@ -2,7 +2,7 @@
     <head>
         <title>blendify - home</title>
         <link rel="stylesheet" href="/blendstyle.css">
-        <script src="supabase-db/index.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-slider/1.0.0/simpleslider.min.js" defer></script>
         <script src="/blendjava.js" defer></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <!--files that exist so far
@@ -13,7 +13,8 @@
             blendjava.js
         -->
     </head>
-    <body>
+    <!--onload will fetch artists-->
+    <body onload="onPageLoad()">
         <div id="NavBar">
         <span id="NavBarPosition">
             <a class="active" href="blendhome.html">home</a>
@@ -21,7 +22,6 @@
             <a href="blendhelp.html">help</a>
         </span>
         </div>
-
         <div id="ParentBody">
             <div id="BodyLeft">
                 <h1>blendify</h1>
@@ -46,21 +46,21 @@
                 <button class="generateButton"> Generate Playlist </button>
             </div>
             <div id="BodyRight">
+                <!--no longer need this but I am keeping it here                 
                 <p>Link your Spotify accounts here!</p>
-                <!--outdated, cannot put user ID here-->
+
                 <div class="login">
-                    <form id="UserAccounts" onsubmit="getUserID(); return false">
+                    <form id="UserAccounts" onsubmit="getArtists(); return false">
                         <label for="User1"> Enter your User ID </label>
                         <br>
                         <div class="input-container">
                             <i class="fa fa-user icon"></i>
                             <input type="text" id="User1" name="User1" placeholder="User ID" required>
                         </div>
-
-                        <!--submit for testing purposes-->
-                        <input type="submit">
+                        <input type="submit" text="get your top artists">
                     </form>
-                </div>
+                </div>-->
+
             </div>
             <div id="Blendify">
                 <p>the results of the 'blend' will go here</p>

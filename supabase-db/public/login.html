@@ -6,20 +6,12 @@
         <script src="blendjava.js" defer></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     </head>
-    <body onload="onPageLoad()">
+    <body>
         <h2 style="text-align:center">Log in to Spotify to access Blendify</h2>
         <div class="login">
-            <!--need to fix styling-->
-            <form id="UserAccounts" onsubmit="spotifyAuth(); return false">
-                <label for="User1"> Enter your User ID </label>
-                <br>
-                <div class="input-container">
-                    <i class="fa fa-user icon"></i>
-                    <input type="text" id="User1" name="User1" placeholder="User ID">
-                </div>
-
-                <!--submit for testing purposes-->
-                <input type="submit">
+            <!--sorry it looks really ugly....-->
+            <form id="logIn" onsubmit="spotifyAuth(); return false">
+                <input type="submit" value="log in to spotify">
             </form>
             </div>
     </body>
