@@ -9,8 +9,8 @@ const token = "https://accounts.spotify.com/api/token";
 const userID = "https://api.spotify.com/v1/me";
 let username = null;
 let artistData = null;
-//may want to edit endpoint to be only 5 artists
-const artists = "https://api.spotify.com/v1/me/top/artists";
+//change the limit to change the amount of artists returned
+const artists = "https://api.spotify.com/v1/me/top/artists?limit=10";
 
 //initialize slider
 simpleslider.getSlider({
@@ -44,7 +44,7 @@ function spotifyAuth() {
   url += "&response_type=code";
   url += "&redirect_uri=" + encodeURI(redirect_uri);
   url += "&show_dialog=true";
-  url += "&scope=user-top-read user-read-private user-read-email";
+  url += "&scope=user-top-read user-read-private user-read-email"; //OAuth scope, changes permissions
   window.location.href = url;
 }
 
