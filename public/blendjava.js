@@ -72,7 +72,7 @@ function topArtists() {
         },
       });
     });
-    console.log(artistData[0].images.map(image => image.url))
+    console.log(artistData[0].images.map((image) => image.url));
   } else {
     console.error("Data is unavailable");
   }
@@ -197,33 +197,40 @@ function handleUserIDResponse() {
 
 // Function to get the top artists of a specific user
 function getTopArtists() {
-
   if (!userID) {
-    console.error('No logged-in user found. Unable to fetch top artists.');
+    console.error("No logged-in user found. Unable to fetch top artists.");
     return;
   }
-
-  const endpoint = `http://localhost:8888/usertopartists?userId=${encodeURIComponent(userID)}`;
+  //im not sure if the endpoints we created allow us to filter by certain properties, but if they did, then it should match the name of the
+  //property in supabase, which is user_id, not userID
+  const endpoint = `http://localhost:8888/usertopartists?userId=${encodeURIComponent(
+    userID
+  )}`;
 
   fetch(endpoint)
-    .then(response => {
+    .then((response) => {
       if (!response.ok) {
-        throw new Error(`Network response was not ok: ${response.status} ${response.statusText}`);
+        throw new Error(
+          `Network response was not ok: ${response.status} ${response.statusText}`
+        );
       }
       return response.json();
     })
-    .then(data => {
+    //filter by user_id here rather than calling it in the endpoint
+    //parse using data.forEach() if this is returning a bunch of json records
+    //do some sort of matching of record.user_id to userID
+    // push to artist name, artist id, and genre array to recrods if user id match
+    //limit to 5-10 artists
+    .then((data) => {
       if (Array.isArray(data)) {
         // Limit the data to the top 10 artists
         const top10Artists = data.slice(0, 10);
-        console.log('Top 10 artists for user', userID, ':', top10Artists);
+        console.log("Top 10 artists for user", userID, ":", top10Artists);
       } else {
-        console.error('Unexpected data format. Expected an array.');
+        console.error("Unexpected data format. Expected an array.");
       }
     })
-    .catch(error => {
-      console.error('Error fetching top artists:', error.message);
+    .catch((error) => {
+      console.error("Error fetching top artists:", error.message);
     });
 }
-
-

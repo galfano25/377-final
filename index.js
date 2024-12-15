@@ -58,35 +58,20 @@ app.post("/usertopartists", async (req, res) => {
   }
 });
 
-//template to get data
-app.get("/TESTs", async (req, res) => {
-  console.log("test attempt");
-
-  const { data, error } = await supabase.from("TEST").select();
-
+//gets data from the table
+app.get("/usertopartists", async (req, res) => {
+  console.log("Top artists");
+  //use the .select to get the items from the table
+  //.eq is used to look for the specific user id
+  //not sure if the userID variable will work?
+  //the userID should be of the person that signed in
+  //so the intended use would be when the person logs in the code will look for that userID in the table and return the top artists
+  //.limit is used to make sure that only 10 top artists are returned
+  const { data, error } = await supabase.from("top_artists").select();
   if (error) {
     console.log("Error: ", error);
     res.send(error);
   } else {
-    console.log("Data retrieved");
-    res.send(data);
-  }
-});
-
-//gets data from the table 
-app.get("/usertopartists", async (req, res) =>{
-  console.log("Top artists");
-  //use the .select to get the items from the table 
-  //.eq is used to look for the specific user id 
-  //not sure if the userID variable will work? 
-  //the userID should be of the person that signed in 
-  //so the intended use would be when the person logs in the code will look for that userID in the table and return the top artists
-  //.limit is used to make sure that only 10 top artists are returned
-  const {data,error} = await supabase.from("top_artists").select();
-  if (error){
-    console.log("Error: ", error);
-    res.send(error);
-  }else{
     console.log("Data Retrieced");
     res.send(data);
   }
