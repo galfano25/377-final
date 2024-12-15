@@ -194,3 +194,36 @@ function handleUserIDResponse() {
     alert(this.responseText);
   }
 }
+
+// Function to get the top artists of a specific user
+function getTopArtists() {
+
+  if (!userID) {
+    console.error('No logged-in user found. Unable to fetch top artists.');
+    return;
+  }
+
+  const endpoint = `http://localhost:8888/usertopartists?userId=${encodeURIComponent(userID)}`;
+
+  fetch(endpoint)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.status} ${response.statusText}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (Array.isArray(data)) {
+        // Limit the data to the top 10 artists
+        const top10Artists = data.slice(0, 10);
+        console.log('Top 10 artists for user', userID, ':', top10Artists);
+      } else {
+        console.error('Unexpected data format. Expected an array.');
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching top artists:', error.message);
+    });
+}
+
+
