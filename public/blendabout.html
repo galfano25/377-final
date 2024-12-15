@@ -75,5 +75,35 @@
                 <img src="/bts_images/fetchuser.png">
             </div>
         </div>
+    
+        <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+        <script> 
+                
+        if (annyang) {
+        var commands = {
+
+            'hello': function() {
+                alert('hi user! on each page you will find voice control guidance to ease your navigation! here is what you can do:\n\n 1. go to *page of your choice*\n 2. say, show me my top artists\n 3. say, how me a picture - you will need to make popups available for this\n\n ***options 2 and 3 are home page only***');},
+
+            'go to *page': function(page) {
+                page = page.trim().toLowerCase();
+                if (page === 'home') {
+                    setTimeout(function() {window.location.href = "blendhome.html";}, 1000)
+                }
+                else if (page === 'help') {
+                    setTimeout(function() {window.location.href = "blendhelp.html";}, 1000)
+                }
+                else if (page === 'about') {
+                    setTimeout(function() {window.location.href = "blendabout.html";}, 1000)
+                }
+                else {
+                    alert('make sure you choose a page that exists! ex: "go to help"');
+                }
+            },
+        };
+        annyang.addCommands(commands);
+        annyang.start();
+        }
+        </script>
     </body>
 </html>

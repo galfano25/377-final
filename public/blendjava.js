@@ -72,6 +72,7 @@ function topArtists() {
         },
       });
     });
+    console.log(artistData[0].images.map(image => image.url))
   } else {
     console.error("Data is unavailable");
   }

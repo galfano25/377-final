@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="/blendstyle.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-slider/1.0.0/simpleslider.min.js" defer></script>
         <script src="/blendjava.js" defer></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js" defer></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <!--files that exist so far
             blendhome.html
@@ -46,6 +47,8 @@
                 <button class="generateButton"> Generate Playlist </button>
             </div>
             <div id="BodyRight">
+                <h2>blendify web is now available with audio controls!</h2>
+                <p>say "hello". make sure to keep your microphone enabled!</p>
                 <!--no longer need this but I am keeping it here                 
                 <p>Link your Spotify accounts here!</p>
 
@@ -69,5 +72,47 @@
                 <p>**chart (using javascript charting library) that shows the users top artists **</p>
             </div>
         </div>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+        <script> 
+                
+        if (annyang) {
+        var commands = {
+
+            'hello': function() {
+                alert('hi user! on each page you will find voice control guidance to ease your navigation! here is what you can do:\n\n 1. go to *page of your choice*\n 2. say, show me my top artists\n 3. say, how me a picture - you will need to make popups available for this\n\n options 2 an d3 are home page only');},
+
+            'go to *page': function(page) {
+                page = page.trim().toLowerCase();
+                if (page === 'home') {
+                    setTimeout(function() {window.location.href = "blendhome.html";}, 1000)
+                }
+                else if (page === 'help') {
+                    setTimeout(function() {window.location.href = "blendhelp.html";}, 1000)
+                }
+                else if (page === 'about') {
+                    setTimeout(function() {window.location.href = "blendabout.html";}, 1000)
+                }
+                else {
+                    alert('make sure you choose a page that exists! ex: "go to help"');
+                }
+            },
+
+            'show me my top artists': function() {
+                alert('Your top artists are: ' + artistData[0].name + ', '+ artistData[1].name + ', ' + artistData[2].name + ', ' + artistData[3].name + ', ' + artistData[4].name + ', ' + artistData[5].name + ', '+ artistData[6].name + ', ' + artistData[7].name + ', ' + artistData[8].name + ', ' + artistData[9].name + '.');
+            },
+
+            'show me a picture': function() {
+                const imgArray = [artistData[0].images.map(image => image.url), artistData[1].images.map(image => image.url), artistData[2].images.map(image => image.url), artistData[3].images.map(image => image.url), artistData[4].images.map(image => image.url), artistData[5].images.map(image => image.url), artistData[6].images.map(image => image.url), artistData[7].images.map(image => image.url), artistData[8].images.map(image => image.url), artistData[9].images.map(image => image.url)]
+
+                const flatImgArray = imgArray.flat();
+                console.log(flatImgArray)
+                const randomImage = flatImgArray[Math.floor(Math.random() * flatImgArray.length)];
+                window.open(randomImage, "_blank");
+            },
+        };
+        annyang.addCommands(commands);
+        annyang.start();
+        }
+        </script>
     </body>
 </html>
