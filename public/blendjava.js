@@ -298,11 +298,62 @@ function callArtistRecs() {
 function handleSearchResponse() {
   if (this.status == 200) {
     var data = JSON.parse(this.responseText);
-    console.log(data.tracks.items);
+
+    // Extract tracks safely
+    const tracks = data.tracks && data.tracks.items ? data.tracks.items : [];
+
+    // Debugging: Log the API response
+    console.log("Tracks Response:", tracks);
+
+    // Get table body element
+    const tableBody = document.querySelector("#recommendationTable tbody");
+
+    // Clear any previous entries in the table
+    tableBody.innerHTML = "";
+
+    // If no tracks are found, display a message
+    if (tracks.length === 0) {
+      const row = document.createElement("tr");
+      const noDataCell = document.createElement("td");
+      noDataCell.textContent = "No tracks found for the selected genre.";
+      noDataCell.colSpan = 3; // Adjust colspan to match the table structure
+      noDataCell.style.textAlign = "center";
+      row.appendChild(noDataCell);
+      tableBody.appendChild(row);
+      return;
+    }
+
+    // Populate table with tracks
+    tracks.forEach((track, index) => {
+      const row = document.createElement("tr");
+
+      // Add track number
+      const numberCell = document.createElement("td");
+      numberCell.textContent = index + 1;
+      row.appendChild(numberCell);
+
+      // Add track name
+      const nameCell = document.createElement("td");
+      nameCell.textContent = track.name || "Unknown";
+      row.appendChild(nameCell);
+
+      // Add artist name(s)
+      const artistCell = document.createElement("td");
+      artistCell.textContent = track.artists
+        .map((artist) => artist.name)
+        .join(", ") || "Unknown";
+      row.appendChild(artistCell);
+
+      // Append row to the table
+      tableBody.appendChild(row);
+    });
   } else if (this.status == 401) {
+    // Handle unauthorized access by refreshing the token
     refreshAccessToken();
   } else {
-    console.log(this.responseText);
-    alert(this.responseText);
+    // Log errors for debugging
+    console.error("Error fetching search results:", this.responseText);
+    alert("An error occurred while fetching search results.");
   }
 }
+
