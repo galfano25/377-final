@@ -72,7 +72,7 @@ function topArtists() {
         },
       });
     });
-    console.log(artistData[0].images.map(image => image.url))
+    console.log(artistData[0].images.map((image) => image.url));
   } else {
     console.error("Data is unavailable");
   }
@@ -194,3 +194,50 @@ function handleUserIDResponse() {
     alert(this.responseText);
   }
 }
+
+// Function to get the top artists of the currently logged-in user
+function getTopArtists() {
+  if (!username) { // Ensure username (userID) is available
+    console.error("No logged-in user found. Unable to fetch top artists.");
+    return;
+  }
+
+  const endpoint = `http://localhost:8888/usertopartists`;
+
+  fetch(endpoint)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.status} ${response.statusText}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if (Array.isArray(data)) {
+        // Filter artists by user_id 
+        const userTopArtists = data.filter((artist) => artist.user_id === username);
+
+        // Remove duplicates based on artist_id
+        const uniqueArtists = [];
+        const artistIds = new Set(); 
+        userTopArtists.forEach((artist) => {
+          if (!artistIds.has(artist.artist_id)) {  // Check if artist_id is not in the Set
+            artistIds.add(artist.artist_id);      // Add artist_id to Set
+            uniqueArtists.push(artist);           // Add artist to the unique list
+          }
+        });
+
+        // Limit the data to the top 10 unique artists
+        const top10Artists = uniqueArtists.slice(0, 10);
+
+        // Log top 10 artists
+        console.log("Top 10 unique artists for user", username, ":", "Artists:", top10Artists);
+      } else {
+        console.error("Unexpected data format. Expected an array.");
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching top artists:", error.message);
+    });
+}
+
+
