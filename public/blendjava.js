@@ -12,18 +12,19 @@ let artistData = null;
 //change the limit to change the amount of artists returned
 let genreChoice = null;
 let top10Artists = null;
+let genresForList = null;
 const artists = "https://api.spotify.com/v1/me/top/artists?limit=10";
 
 const genreColors = {
-  Pop: "#f1c5ae",
-  Rock: "#ecddd0",
-  Rap: "#ced2c2",
-  "R&B": "#92b1b6",
-  EDM: "#35455d",
-  Country: "#bfd1df",
-  Jazz: "#e8d0a9",
-  Classical: "#c1dad6",
-  Indie: "#6d929",
+  0: "#f1c5ae",
+  1: "#ecddd0",
+  2: "#ced2c2",
+  3: "#92b1b6",
+  4: "#35455d",
+  5: "#bfd1df",
+  6: "#e8d0a9",
+  7: "#c1dad6",
+  8: "#6d929",
 };
 
 //initialize slider
@@ -34,10 +35,19 @@ simpleslider.getSlider({
 function selectGenre(chosenGenre) {
   genreChoice = chosenGenre;
   const button = document.getElementById("genreButton");
-  button.textContent = chosenGenre;
-
+  button.textContent = genresForList[chosenGenre];
   button.style.backgroundColor = genreColors[chosenGenre] || "#898989";
   button.style.color = "white";
+}
+
+function updateGenres(array) {
+  array.forEach((genre, index) => {
+    const link = document.getElementById(index.toString());
+    if (link) {
+      link.textContent = genre;
+      link.onclick = () => selectGenre(index);
+    }
+  });
 }
 
 //authorization
@@ -270,10 +280,6 @@ function getTopArtists() {
     });
 }
 
-function updateGenres(array) {
-  array.forEach({});
-}
-
 function getRandomGenres(array) {
   const result = [];
   const indices = new Set();
@@ -298,62 +304,11 @@ function callArtistRecs() {
 function handleSearchResponse() {
   if (this.status == 200) {
     var data = JSON.parse(this.responseText);
-
-    // Extract tracks safely
-    const tracks = data.tracks && data.tracks.items ? data.tracks.items : [];
-
-    // Debugging: Log the API response
-    console.log("Tracks Response:", tracks);
-
-    // Get table body element
-    const tableBody = document.querySelector("#recommendationTable tbody");
-
-    // Clear any previous entries in the table
-    tableBody.innerHTML = "";
-
-    // If no tracks are found, display a message
-    if (tracks.length === 0) {
-      const row = document.createElement("tr");
-      const noDataCell = document.createElement("td");
-      noDataCell.textContent = "No tracks found for the selected genre.";
-      noDataCell.colSpan = 3; // Adjust colspan to match the table structure
-      noDataCell.style.textAlign = "center";
-      row.appendChild(noDataCell);
-      tableBody.appendChild(row);
-      return;
-    }
-
-    // Populate table with tracks
-    tracks.forEach((track, index) => {
-      const row = document.createElement("tr");
-
-      // Add track number
-      const numberCell = document.createElement("td");
-      numberCell.textContent = index + 1;
-      row.appendChild(numberCell);
-
-      // Add track name
-      const nameCell = document.createElement("td");
-      nameCell.textContent = track.name || "Unknown";
-      row.appendChild(nameCell);
-
-      // Add artist name(s)
-      const artistCell = document.createElement("td");
-      artistCell.textContent = track.artists
-        .map((artist) => artist.name)
-        .join(", ") || "Unknown";
-      row.appendChild(artistCell);
-
-      // Append row to the table
-      tableBody.appendChild(row);
-    });
+    console.log(data.tracks.items);
   } else if (this.status == 401) {
-    // Handle unauthorized access by refreshing the token
     refreshAccessToken();
   } else {
-    // Log errors for debugging
-    console.error("Error fetching search results:", this.responseText);
-    alert("An error occurred while fetching search results.");
+    console.log(this.responseText);
+    alert(this.responseText);
   }
 }
-
