@@ -72,7 +72,7 @@ function onPageLoad() {
 function topArtists() {
   if (artistData && artistData.length > 0) {
     artistData.forEach((artist) => {
-      fetch("http://localhost:8888/usertopartists", {
+      fetch("https://blendify-ten.vercel.app/usertopartists", {
         method: "POST",
         body: JSON.stringify({
           user_id: username,
@@ -216,7 +216,7 @@ function getTopArtists() {
     return;
   }
 
-  const endpoint = `http://localhost:8888/usertopartists`;
+  const endpoint = `https://blendify-ten.vercel.app/usertopartists`;
 
   fetch(endpoint)
     .then((response) => {
