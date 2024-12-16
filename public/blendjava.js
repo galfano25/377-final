@@ -10,6 +10,8 @@ const userID = "https://api.spotify.com/v1/me";
 let username = null;
 let artistData = null;
 //change the limit to change the amount of artists returned
+let genreChoice = null;
+let top10Arists = null;
 const artists = "https://api.spotify.com/v1/me/top/artists?limit=10";
 
 //initialize slider
@@ -18,6 +20,7 @@ simpleslider.getSlider({
 });
 
 function selectGenre(chosenGenre) {
+  genreChoice = chosenGenre;
   const button = document.getElementById("genreButton");
   button.textContent = chosenGenre;
 
@@ -197,7 +200,8 @@ function handleUserIDResponse() {
 
 // Function to get the top artists of the currently logged-in user
 function getTopArtists() {
-  if (!username) { // Ensure username (userID) is available
+  if (!username) {
+    // Ensure username (userID) is available
     console.error("No logged-in user found. Unable to fetch top artists.");
     return;
   }
@@ -207,30 +211,41 @@ function getTopArtists() {
   fetch(endpoint)
     .then((response) => {
       if (!response.ok) {
-        throw new Error(`Network response was not ok: ${response.status} ${response.statusText}`);
+        throw new Error(
+          `Network response was not ok: ${response.status} ${response.statusText}`
+        );
       }
       return response.json();
     })
     .then((data) => {
       if (Array.isArray(data)) {
-        // Filter artists by user_id 
-        const userTopArtists = data.filter((artist) => artist.user_id === username);
+        // Filter artists by user_id
+        const userTopArtists = data.filter(
+          (artist) => artist.user_id === username
+        );
 
         // Remove duplicates based on artist_id
         const uniqueArtists = [];
-        const artistIds = new Set(); 
+        const artistIds = new Set();
         userTopArtists.forEach((artist) => {
-          if (!artistIds.has(artist.artist_id)) {  // Check if artist_id is not in the Set
-            artistIds.add(artist.artist_id);      // Add artist_id to Set
-            uniqueArtists.push(artist);           // Add artist to the unique list
+          if (!artistIds.has(artist.artist_id)) {
+            // Check if artist_id is not in the Set
+            artistIds.add(artist.artist_id); // Add artist_id to Set
+            uniqueArtists.push(artist); // Add artist to the unique list
           }
         });
 
         // Limit the data to the top 10 unique artists
-        const top10Artists = uniqueArtists.slice(0, 10);
+        top10Artists = uniqueArtists.slice(0, 10);
 
         // Log top 10 artists
-        console.log("Top 10 unique artists for user", username, ":", "Artists:", top10Artists);
+        console.log(
+          "Top 10 unique artists for user",
+          username,
+          ":",
+          "Artists:",
+          top10Artists
+        );
       } else {
         console.error("Unexpected data format. Expected an array.");
       }
@@ -240,4 +255,20 @@ function getTopArtists() {
     });
 }
 
+function callArtistRecs() {
+  console.log(genreChoice);
+  const search = `https://api.spotify.com/v1/search?q=genre%3A${genreChoice}&type=track&limit=10`;
+  callApi("GET", search, null, handleSearchResponse);
+}
 
+function handleSearchResponse() {
+  if (this.status == 200) {
+    var data = JSON.parse(this.responseText);
+    console.log(data.tracks.items);
+  } else if (this.status == 401) {
+    refreshAccessToken();
+  } else {
+    console.log(this.responseText);
+    alert(this.responseText);
+  }
+}

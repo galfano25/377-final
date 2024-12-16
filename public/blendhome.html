@@ -27,7 +27,9 @@
             <div id="BodyLeft">
                 <h1>blendify</h1>
                 <p>Connect you and your friends' Spotify accounts to get a blended playlist of everyone's favorite genre!</p>
+                <button class="generateButton" onclick="getTopArtists()">Press here to generate your top artists.</button>
                 <br>
+                <form id="getRecommendations" onsubmit="">
                 <div class="PickGenre">
                     <button id="genreButton" class="genreButton"> Pick a Genre </button>
                     <div class="genres">
@@ -44,7 +46,8 @@
                     </div>
                 </div>
                 <br><br>
-                <button class="generateButton" onclick="getTopArtists('userID')"> Generate Playlist </button>
+                <input type="submit" class="generateButton" onclick="callArtistRecs(); return false" value="generate recommendations">
+            </form>
             </div>
             <div id="BodyRight">
                 <h2>blendify web is now available with audio controls!</h2>
