@@ -249,14 +249,15 @@ td {
 }
 
 /*css for the login to account*/
-.loginButton {
-    color: #ffffff;
+.spotifyButton {
+    color: #7590b9;
     padding: 15px 25px;
     border-radius: 100px;
-    background-color: #839fc8;
+    background-color: #ffffffe2;
     background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 87% at 26% 20%, rgba(255, 255, 255, 0.41) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     font-weight: bold;
-    font-size: 16px;
+    font-size: 20px;
   
     border: 0;
   
@@ -268,10 +269,10 @@ td {
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease;
 }
 
-.loginButton:not([disabled]):focus {
+.spotifyButton:not([disabled]):focus {
   box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(172, 216, 255, 0.5), .125rem .125rem 1rem rgba(255, 255, 255, 0.5);
 }
 
-.loginButton:not([disabled]):hover {
+.spotifyButton:not([disabled]):hover {
   box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(124, 194, 255, 0.5), .125rem .125rem 1rem rgba(255, 255, 255, 0.5);
 }
