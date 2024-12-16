@@ -1,10 +1,10 @@
 <html>
     <head>
         <title>blendify - home</title>
-        <link rel="stylesheet" href="/blendstyle.css">
+        <link rel="stylesheet" href="blendstyle.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-slider/1.0.0/simpleslider.min.js" defer></script>
-        <script src="/blendjava.js" defer></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js" defer></script>
+        <script src="blendjava.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js" defer></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <!--files that exist so far
             blendhome.html
@@ -48,21 +48,11 @@
             </div>
             <div id="BodyRight">
                 <h2>blendify web is now available with audio controls!</h2>
-                <p>say "hello". make sure to keep your microphone enabled!</p>
-                <!--no longer need this but I am keeping it here                 
-                <p>Link your Spotify accounts here!</p>
+                <p>Say "hello". Make sure to keep your microphone enabled!</p>
+                                 
+                <p style="font-weight: bold;">Link your Spotify account here!</p>
 
-                <div class="login">
-                    <form id="UserAccounts" onsubmit="getArtists(); return false">
-                        <label for="User1"> Enter your User ID </label>
-                        <br>
-                        <div class="input-container">
-                            <i class="fa fa-user icon"></i>
-                            <input type="text" id="User1" name="User1" placeholder="User ID" required>
-                        </div>
-                        <input type="submit" text="get your top artists">
-                    </form>
-                </div>-->
+                <button class="loginButton" onclick="getArtists(); return false">Connect My Account</button>
 
             </div>
             <div id="Blendify">
