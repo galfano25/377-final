@@ -11,7 +11,7 @@ let username = null;
 let artistData = null;
 //change the limit to change the amount of artists returned
 let genreChoice = null;
-let top10Arists = null;
+let top10Artists = null;
 const artists = "https://api.spotify.com/v1/me/top/artists?limit=10";
 
 //initialize slider
@@ -238,6 +238,20 @@ function getTopArtists() {
         // Limit the data to the top 10 unique artists
         top10Artists = uniqueArtists.slice(0, 10);
 
+        //selects the genres
+        const favGenres = [];
+
+        top10Artists.forEach((artist) => {
+          artist.genre_name.forEach((genre) => {
+            favGenres.push(genre);
+          });
+        });
+
+        //randomly selects 10 genres
+        genresForList = getRandomGenres(favGenres);
+
+        document.getElementById("getRecommendations").style.display = "block";
+
         // Log top 10 artists
         console.log(
           "Top 10 unique artists for user",
@@ -253,6 +267,21 @@ function getTopArtists() {
     .catch((error) => {
       console.error("Error fetching top artists:", error.message);
     });
+}
+
+function getRandomGenres(array) {
+  const result = [];
+  const indices = new Set();
+
+  while (result.length < 10 && result.length < array.length) {
+    const randomIndex = Math.floor(Math.random() * array.length);
+    if (!indices.has(randomIndex)) {
+      result.push(array[randomIndex]);
+      indices.add(randomIndex);
+    }
+  }
+  console.log("random genres from fav artists: ", result);
+  return result;
 }
 
 function callArtistRecs() {

@@ -29,7 +29,7 @@
                 <p>Connect your Spotify account to get a blended playlist of your favorite genre!</p>
                 <button class="generateButton" onclick="getTopArtists()">Press here to generate your top artists.</button>
                 <br>
-                <form id="getRecommendations" onsubmit="">
+                <form id="getRecommendations" onsubmit="callArtistRecs(); return false" style="display:none">
                 <div class="PickGenre">
                     <button id="genreButton" class="genreButton"> Pick a Genre </button>
                     <div class="genres">
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <br><br>
-                <input type="submit" class="generateButton" onclick="callArtistRecs(); return false" value="generate recommendations">
+                <input type="submit" class="generateButton" value="generate recommendations">
             </form>
             <div id="recommendations">
                 <table id="recommendationTable" border="1">
