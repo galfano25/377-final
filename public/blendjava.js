@@ -306,7 +306,6 @@ function handleSearchResponse() {
     var data = JSON.parse(this.responseText);
     // Extract tracks safely
     const tracks = data.tracks && data.tracks.items ? data.tracks.items : [];
-    // Debugging: Log the API response
     console.log("Tracks Response:", tracks);
     // Get table body element
     const tableBody = document.querySelector("#recommendationTable tbody");
