@@ -25,12 +25,12 @@ app.get("/blendhome.html", async (req, res) => {
 });
 
 //load about page
-app.get("/public/blendabout.html", (req, res) => {
+app.get("/blendabout.html", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "blendabout.html"));
 });
 
 //load help page
-app.get("/public/blendhelp.html", (req, res) => {
+app.get("/blendhelp.html", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "blendhelp.html"));
 });
 
