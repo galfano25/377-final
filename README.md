@@ -1,5 +1,6 @@
 # 377-final
 
+# Blendify
 <b>accessing blendify:</b>
 <br>npm start
 <br>type "localhost:8888" into browser
@@ -21,3 +22,29 @@
 <br>
 <em>url includes anything other than /public/blendhome.html:</em>
 <br>make sure your ad blocker is disabled for the spotifyapi and in the spotify auth page
+
+<b>API Calls 
+<br> get/public/blendhome.html 
+<br> gets the home page 
+<br>
+<br> get/public/blendabout.html
+<br> gets the about page 
+<br>
+<br> get/public/blendhelp.html
+<br> gets the help page 
+<br>
+<br> post/usertopartists
+<br> posts the users top artists to the supabase 
+<br>
+<br> get/usertopartists
+<br> gets the top artists of all the users in the database 
+<br>
+<br>
+<b>Bugs
+<br>some of the recommend songs are repeated 
+<br>some of the genres don't have recommendations for them 
+<br>
+<br>
+<b>Future development 
+<br> create a playlist from the user based on the recommended songs 
+<br> create a chart that shows the top artists 
