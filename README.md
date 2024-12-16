@@ -28,7 +28,7 @@
 <em>url includes anything other than /public/blendhome.html:</em>
 <br>make sure your ad blocker is disabled for the spotifyapi and in the spotify auth page
 
-<b>API Calls 
+<b>API Calls</b>
 <br> get/public/blendhome.html 
 <br> gets the home page 
 <br>
@@ -45,6 +45,9 @@
 <br> gets the top artists of all the users in the database 
 <br>
 <br>
+<b>JS Libraries</b>
+<br> Picture Slider on about page
+<br> Annyang Voice Commands, available on home page only
 <b>Bugs
 <br>some of the recommend songs are repeated 
 <br>some of the genres don't have recommendations for them 
@@ -55,3 +58,4 @@
 <br> create a chart that shows the top artists 
 <br> expand app to be able to accept more than one spotify account to make one blend for several users
 <br> use more than top artists data to create more curated blends
+<br> expand annyang use to all app pages and integrate to interact with the spotify api more
