@@ -27,6 +27,10 @@
 <br>
 <em>url includes anything other than /public/blendhome.html:</em>
 <br>make sure your ad blocker is disabled for the spotifyapi and in the spotify auth page
+<br>
+<em>annyang voice commands not working:</em>
+<br> ensure microphone is enabled for home page
+<br> then refresh the page
 
 <b>API Calls</b>
 <br> get/public/blendhome.html 
