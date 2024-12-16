@@ -1,7 +1,7 @@
 //OAuth stuff
 var client_id = "4a99b5944530470daf7c9659a88fc2f0";
 var client_secret = "a3a8ddad071242128d8d0c39c332fe88";
-var redirect_uri = "https://blendify-ten.vercel.app/blendhome.html";
+var redirect_uri = "https://blendify-pi.vercel.app/blendhome.html";
 
 const authorize = "https://accounts.spotify.com/authorize";
 
@@ -72,7 +72,7 @@ function onPageLoad() {
 function topArtists() {
   if (artistData && artistData.length > 0) {
     artistData.forEach((artist) => {
-      fetch("https://blendify-ten.vercel.app/usertopartists", {
+      fetch("https://blendify-pi.vercel.app/usertopartists", {
         method: "POST",
         body: JSON.stringify({
           user_id: username,
@@ -216,7 +216,7 @@ function getTopArtists() {
     return;
   }
 
-  const endpoint = `https://blendify-ten.vercel.app/usertopartists`;
+  const endpoint = `https://blendify-pi.vercel.app/usertopartists`;
 
   fetch(endpoint)
     .then((response) => {
