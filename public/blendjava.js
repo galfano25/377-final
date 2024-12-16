@@ -55,7 +55,7 @@ function spotifyAuth() {
   let url = authorize;
   url += "?client_id=" + client_id;
   url += "&response_type=code";
-  url += "&redirect_uri=" + encodeURI(redirect_uri);
+  url += "&redirect_uri=" + encodeURIComponent(redirect_uri);
   url += "&show_dialog=true";
   url += "&scope=user-top-read user-read-private user-read-email"; //OAuth scope, changes permissions
   window.location.href = url;
