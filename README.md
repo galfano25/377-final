@@ -11,6 +11,11 @@
 <br>username of current user should show in console
 <br>URL should read as localhost:8888/public/blendhome.html
 <br>upon page load, <b><em>your data will upload to supabase</em></b>, so make sure to check that to ensure your data loaded correctly
+<br>there will be a button that allows us to get your top artists 
+<br>after that button is pressed there will be two new buttons. 
+<br>one that is a dropdown that lets you select the genre of music you want based on your top artists
+<br>from there you can generate recommended songs based on those genres. 
+<br>the recommended songs will apear on a table below the buttons.
 
 <b>errors</b>
 <br>
@@ -46,5 +51,7 @@
 <br>
 <br>
 <b>Future development 
-<br> create a playlist from the user based on the recommended songs 
+<br> create a playlist for the user based on the recommended songs 
 <br> create a chart that shows the top artists 
+<br> expand app to be able to accept more than one spotify account to make one blend for several users
+<br> use more than top artists data to create more curated blends
