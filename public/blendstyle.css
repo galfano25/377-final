@@ -249,6 +249,11 @@ td {
 }
 
 /*css for the login to account*/
+.login {
+    margin: 0; 
+    display: flex;
+    justify-content: center;
+}
 .spotifyButton {
     color: #7590b9;
     padding: 15px 25px;
