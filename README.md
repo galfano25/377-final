@@ -2,20 +2,27 @@
 
 # Blendify
 
+Our project utilizes the Spotify API to generate track recommendations based on the genres of your favorite artists!
+
+Our target browsers are Chrome browsers.
+
 <b>accessing blendify:</b>
 go to <a href="https://blendify-pi.vercel.app/">blendify-pi.vercel.app</a> to access the app.
 
 <b>errors</b>
 <br>
-<em>nothing showing on console:</em>
-<br>go to network tab and filter for "Fetch/XHR"
-<br>check if "token," "artists," and/or "me" went through
-<br>token expired, try logging in again (although should handle token refresh)
-<br>your ad blocker is enabled - disable for spotify API
-<br>
-<em>url includes anything other than /public/blendhome.html:</em>
-<br>make sure your ad blocker is disabled for the spotifyapi and in the spotify auth page
-<br>
+<em>site marked as unsafe</em>
+<br>we promsie we are not stealing your data!
+
+<em>after log in and redirected to home page, error pops up</em>
+<br>simply refresh your page, sometimes the authentication token is not stored correctly
+
+<em>nothing is happening</em>
+<br>check to make sure your ad blocker is off for spotify extensions, then log in again.
+
+<em>the data is taking forever to load when I press the "generate genres" button</em>
+<br>sometimes the data takes a while, try clicking around and seeing if other elements pop up!
+
 <em>annyang voice commands not working:</em>
 <br> ensure microphone is enabled for home page
 <br> then refresh the page
