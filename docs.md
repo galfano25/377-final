@@ -8,12 +8,12 @@ How to install application:
    c. npm install body-parser
    d. npm install path
 
-How to run the application on the server:
-Prerequisites:
-i. register the app on https://developer.spotify.com/
-ii. update the client_id and client_secret to the one assigned to your app
-iii. make the redirect uri localhost:8888/public/blendhome.html on both the spotify app configuration and in the blendjava.js file
-iv. update the endpoints from the root "https://blendify-pi.vercel.app/" to the root "localhost:8888/"
+How to run the application on the server:<br>
+Prerequisites:<br>
+i. register the app on https://developer.spotify.com/<br>
+ii. update the client_id and client_secret to the one assigned to your app<br>
+iii. make the redirect uri localhost:8888/public/blendhome.html on both the spotify app configuration and in the blendjava.js file<br>
+iv. update the endpoints from the root "https://blendify-pi.vercel.app/" to the root "localhost:8888/"<br>
 
 1. In the command line, type "npm start"
 2. Navigate to your browser and type "localhost:8888". You should be directed to the log in page.
