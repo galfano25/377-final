@@ -1,7 +1,7 @@
 //OAuth stuff
 var client_id = "4a99b5944530470daf7c9659a88fc2f0";
 var client_secret = "a3a8ddad071242128d8d0c39c332fe88";
-var redirect_uri = "https://blendify-sigma.vercel.app/public/blendhome.html";
+var redirect_uri = "https://blendify-ten.vercel.app/blendhome.html";
 
 const authorize = "https://accounts.spotify.com/authorize";
 
@@ -55,7 +55,7 @@ function spotifyAuth() {
   let url = authorize;
   url += "?client_id=" + client_id;
   url += "&response_type=code";
-  url += "&redirect_uri=" + encodeURI(redirect_uri);
+  url += "&redirect_uri=" + encodeURIComponent(redirect_uri);
   url += "&show_dialog=true";
   url += "&scope=user-top-read user-read-private user-read-email"; //OAuth scope, changes permissions
   window.location.href = url;
