@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 });
 
 //callback
-app.get("/public/blendhome.html", async (req, res) => {
+app.get("/blendhome.html", async (req, res) => {
   res.sendFile(path.join(__dirname, "public", "blendhome.html"));
 });
 
