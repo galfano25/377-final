@@ -53,3 +53,5 @@
 <b>Future development 
 <br> create a playlist for the user based on the recommended songs 
 <br> create a chart that shows the top artists 
+<br> expand app to be able to accept more than one spotify account to make one blend for several users
+<br> use more than top artists data to create more curated blends
