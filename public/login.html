@@ -2,14 +2,13 @@
     <head>
         <title>Log In to Blendify</title>
         <link rel="stylesheet" href="/blendstyle.css">
-        <script src="supabase-db/index.js" defer></script>
-        <script src="blendjava.js" defer></script>
+        <script src="index.js" defer></script>
+        <script src="/blendjava.js" defer></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     </head>
     <body>
         <h2 style="text-align:center">Log in to Spotify to access Blendify</h2>
         <div class="login">
-            <!--sorry it looks really ugly....-->
             <form id="logIn" onsubmit="spotifyAuth(); return false">
                 <input type="submit" value="log in to spotify">
             </form>
